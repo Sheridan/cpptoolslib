@@ -20,6 +20,7 @@ install_target:
 	sudo cp src/networking/networking.h /usr/local/include/cppt
 	sudo cp src/shell/shell.h /usr/local/include/cppt
 	sudo cp src/string/string.h /usr/local/include/cppt
+	sudo cp src/user/user.h /usr/local/include/cppt
 
 install_debug: subdir=debug
 install_debug: install_target

@@ -9,10 +9,10 @@ option(CMAKE_BUILD_TYPE "Build type" Release)
 
 message("Configuring as " ${CMAKE_BUILD_TYPE})
 if (CMAKE_BUILD_TYPE STREQUAL Debug)
-    set(CMAKE_VERBOSE_MAKEFILE ON)
-   set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG")
-   set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
-    add_definitions(-DCPPTL_DEBUG)
+  set(CMAKE_VERBOSE_MAKEFILE ON)
+  set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -DDEBUG")
+  set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
+  add_definitions(-DCPPTL_DEBUG)
 endif (CMAKE_BUILD_TYPE STREQUAL Debug)
 
 set(CPPTL_HEADERS
@@ -20,6 +20,7 @@ set(CPPTL_HEADERS
   src/networking/networking.h
   src/shell/shell.h
   src/string/string.h
+  src/user/user.h
   )
 
 set(CPPTL_SOURCES
@@ -27,6 +28,7 @@ set(CPPTL_SOURCES
   src/networking/networking.cpp
   src/shell/shell.cpp
   src/string/string.cpp
+  src/user/user.cpp
   )
 
 include_directories(
@@ -35,6 +37,7 @@ include_directories(
   src/networking
   src/shell
   src/string
+  src/user
   )
 
 add_library(cpptools SHARED ${CPPTL_HEADERS} ${CPPTL_SOURCES})

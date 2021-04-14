@@ -2,7 +2,8 @@
 
 #include <loggerlib.h>
 
-ll::CLogger *logger;
+class CLogger : public ll::CLogger<CLogger> {};
+CLogger *logger;
 
 #define LL_LOG_START(_what) logger->start() << _what;
 #define LL_LOG_STOP         logger->stop();
