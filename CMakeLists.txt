@@ -42,5 +42,7 @@ include_directories(
 
 add_library(cpptools SHARED ${CPPTL_HEADERS} ${CPPTL_SOURCES})
 
-add_executable(test test/test.h test/test.cpp)
-target_link_libraries(test PUBLIC cpptools logger stdc++fs)
+if (CMAKE_BUILD_TYPE STREQUAL Debug)
+  add_executable(test test/test.h test/test.cpp)
+  target_link_libraries(test PUBLIC cpptools logger stdc++fs)
+endif (CMAKE_BUILD_TYPE STREQUAL Debug)
