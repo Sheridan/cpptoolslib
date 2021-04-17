@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Sheridan/cpptoolslib.svg?branch=master)](https://travis-ci.com/Sheridan/cpptoolslib)
+
 # cpptoolslib
 Some simple methos for working with strings, networking, filesystem, etc...
 
