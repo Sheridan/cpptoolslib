@@ -1,0 +1,17 @@
+language: cpp
+sudo: required
+compiler:
+- gcc
+os:
+- linux
+branches:
+  only:
+  - master
+script: make release
+after_success: make install_release
+notifications:
+  email:
+    recipients:
+    - gorlov.maxim@gmail.com
+    on_success: change
+    on_failure: always
