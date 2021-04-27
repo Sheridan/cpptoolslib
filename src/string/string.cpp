@@ -7,6 +7,7 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip>
+#include <cstddef>
 
 namespace cppt
 {
@@ -71,6 +72,28 @@ std::string formatted_current_datetime(const std::string &format)
   std::time_t dt = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
   oss << std::put_time(std::localtime(&dt), format.c_str());
   return oss.str();
+}
+
+std::string repeat(const std::string &str, const std::size_t &n)
+{
+  if(n == 0)
+  {
+    return "";
+  }
+  if(n == 1 || str.empty()) { return str; }
+
+  std::string result(str);
+  const auto period = result.size();
+  if(period == 1)
+  {
+    result.append(n - 1, result.front());
+    return result;
+  }
+  result.reserve(period * n);
+  std::size_t m {2};
+  for(; m < n; m *= 2) result += result;
+  result.append(result.c_str(), (n - (m / 2)) * period);
+  return result;
 }
 
 }
