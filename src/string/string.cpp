@@ -76,23 +76,15 @@ std::string formatted_current_datetime(const std::string &format)
 
 std::string repeat(const std::string &str, const std::size_t &n)
 {
-  if(n == 0)
-  {
-    return "";
-  }
-  if(n == 1 || str.empty()) { return str; }
+  if(n == 0)                { return                     {}; }
+  if(n == 1 || str.empty()) { return                    str; }
+  if(str.size() == 1)       { return std::string(n, str[0]); }
 
-  std::string result(str);
-  const auto period = result.size();
-  if(period == 1)
-  {
-    result.append(n - 1, result.front());
-    return result;
-  }
-  result.reserve(period * n);
-  std::size_t m {2};
-  for(; m < n; m *= 2) result += result;
-  result.append(result.c_str(), (n - (m / 2)) * period);
+  std::string result = str;
+  result.reserve(str.size() * n);
+  std::size_t m = 2;
+  for(; m <= n; m *= 2) { result += result; }
+  result.append(result.c_str(), (n-(m/2)) * str.size());
   return result;
 }
 
